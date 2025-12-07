@@ -26,7 +26,7 @@ export default function HeroSection() {
           }`}
         >
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#FFD700] rounded-full flex items-center justify-center animate-bounce">
+            <div className="">
               <Youtube className="w-12 h-12 sm:w-14 sm:h-14 text-black" />
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function HeroSection() {
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
         </div>
