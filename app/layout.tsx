@@ -5,12 +5,12 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'NDcomps10 - Football Highlights & Compilations',
+  title: 'NDcomps10 - Website',
   description: 'Experience the beautiful game through epic moments, stunning goals, and incredible skills. The ultimate destination for football compilations.',
   keywords: ['football', 'highlights', 'compilations', 'soccer', 'goals', 'skills', 'NDcomps10'],
   authors: [{ name: 'NDcomps10' }],
   openGraph: {
-    title: 'NDcomps10 - Football Highlights & Compilations',
+    title: 'NDcomps10 - Website',
     description: 'Experience the beautiful game through epic moments, stunning goals, and incredible skills.',
     type: 'website',
   },
