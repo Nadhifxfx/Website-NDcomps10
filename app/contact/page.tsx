@@ -17,12 +17,12 @@ export default function ContactPage() {
       link: 'https://www.youtube.com/@NDcomps10',
       linkText: '@NDcomps10'
     },
-    {
+  {
       icon: Mail,
       title: 'EMAIL',
       description: 'Send us an email',
-      link: 'mailto:contact@ndcomps10.com',
-      linkText: 'contact@ndcomps10.com'
+      link: 'mailto:ndcomps10@gmail.com',
+      linkText: 'ndcomps10@gmail.com'
     },
     {
       icon: MessageSquare,

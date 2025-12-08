@@ -36,7 +36,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-300 mb-4 tracking-wide">
-            FOOTBALL HIGHLIGHTS & COMPILATIONS
+            Your Home of Football ⚽️
           </p>
 
           <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
