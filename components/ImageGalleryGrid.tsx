@@ -30,13 +30,8 @@ export default function ImageGalleryGrid({ images }: ImageGalleryGridProps) {
     );
   }
 
-  // Get unique categories
-  const categories = ['All', ...Array.from(new Set(images.map(img => img.category)))];
-
-  // Filter images by category
-  const filteredImages = selectedCategory === 'All' 
-    ? images 
-    : images.filter(img => img.category === selectedCategory);
+  // No filtering - show all images
+  const filteredImages = images;
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -76,39 +71,23 @@ export default function ImageGalleryGrid({ images }: ImageGalleryGridProps) {
 
   return (
     <>
-      {/* Category Filter */}
-      <div className="mb-8 flex flex-wrap gap-3">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${
-              selectedCategory === category
-                ? 'bg-[#FFD700] text-black shadow-lg shadow-[#FFD700]/30'
-                : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Masonry Grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+      {/* Grid 5 per Row - 1080x1080 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {filteredImages.map((image, index) => (
           <div
             key={image.id}
-            className="break-inside-avoid group cursor-pointer"
+            className="group cursor-pointer"
             onClick={() => openLightbox(index)}
           >
             <div className="relative overflow-hidden rounded-xl bg-black/50 shadow-lg">
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-square w-full">
                 <Image
                   src={image.src}
                   alt={image.title}
-                  fill
-                  className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  width={1080}
+                  height={1080}
+                  className="object-cover w-full h-full transition-all duration-500 group-hover:scale-110 group-hover:brightness-75"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
                 />
               </div>
 
@@ -130,10 +109,7 @@ export default function ImageGalleryGrid({ images }: ImageGalleryGridProps) {
                 </div>
               </div>
 
-              {/* Category Badge */}
-              <div className="absolute top-3 left-3 bg-black/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#FFD700]">
-                {image.category}
-              </div>
+
             </div>
           </div>
         ))}
@@ -171,21 +147,19 @@ export default function ImageGalleryGrid({ images }: ImageGalleryGridProps) {
           )}
 
           {/* Content */}
-          <div className="w-full max-w-6xl mx-4">
-            <div className="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
+          <div className="w-full h-full flex flex-col justify-center items-center px-4 py-8">
+            <div className="relative w-full h-[85vh] max-w-7xl bg-black rounded-xl overflow-hidden shadow-2xl">
               <Image
                 src={currentImage.src}
                 alt={currentImage.title}
                 fill
                 className="object-contain"
+                sizes="100vw"
               />
             </div>
 
             {/* Info */}
-            <div className="mt-6 text-center">
-              <div className="inline-block bg-[#FFD700]/20 backdrop-blur-sm border border-[#FFD700]/30 px-4 py-1 rounded-full text-[#FFD700] text-sm font-bold mb-3">
-                {currentImage.category}
-              </div>
+            <div className="mt-6 text-center max-w-3xl">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 {currentImage.title}
               </h2>

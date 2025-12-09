@@ -13,54 +13,56 @@ export const metadata = {
 const galleryImages = [
   {
     id: 1,
-    src: '/gallery/image-1.svg', // Ganti .svg dengan .jpg setelah upload gambar Anda
-    title: 'Epic Goal Celebration',
-    description: 'Amazing moment captured',
-    category: 'Goals'
+    src: '/gallery/Messi Finnalisma.jpg', // Ganti .svg dengan .jpg setelah upload gambar Anda
+    title: 'The last two Finalissima holders',
+    description: 'Maradona 1993 & Messi 2022 Argentina 🏆 captured',
   },
   {
     id: 2,
-    src: '/gallery/image-2.svg',
-    title: 'Skillful Dribble',
-    description: 'Technical excellence',
-    category: 'Skills'
+    src: '/gallery/Special One.jpg',
+    title: 'The Special One',
+    description: 'Jose Mourinho celebrating a tactical masterclass',
   },
   {
     id: 3,
-    src: '/gallery/image-3.svg',
-    title: 'Team Victory',
-    description: 'Champions moment',
-    category: 'Highlights'
+    src: '/gallery/best number 9.jpeg',
+    title: 'The Best Number 9',
+    description: 'Legendary striker in action',
   },
   {
     id: 4,
-    src: '/gallery/image-4.svg',
-    title: 'Goalkeeper Save',
-    description: 'Incredible reflexes',
-    category: 'Saves'
+    src: '/gallery/ronaldo.jpeg',
+    title: 'CR7 Iconic Celebration',
+    description: 'Legend on the field',
   },
   {
     id: 5,
-    src: '/gallery/image-5.svg',
-    title: 'Free Kick Master',
-    description: 'Perfect technique',
-    category: 'Goals'
+    src: '/gallery/BOTH GOAT.jpeg',
+    title: 'GOATs',
+    description: 'Legends on the field',
   },
   {
     id: 6,
-    src: '/gallery/image-6.svg',
-    title: 'Team Huddle',
-    description: 'Unity and spirit',
+    src: '/gallery/cyc.jpeg',
+    title: 'Bicycle Kick Goal',
+    description: 'Spectacular strike',
     category: 'Team'
   },
-  // Tambahkan lebih banyak gambar dengan format:
-  // {
-  //   id: 7,
-  //   src: '/gallery/your-image.jpg',
-  //   title: 'Judul Gambar',
-  //   description: 'Deskripsi gambar',
-  //   category: 'Goals' // atau 'Skills', 'Highlights', 'Saves', 'Team'
-  // },
+  {
+    id: 7,
+    src: '/gallery/goat.jpg',
+    title: '8 TH BALLON DOR',
+    description: 'Infinity',
+  },
+    {
+    id: 8,
+    src: '/gallery/HIM.jpeg',
+    title: 'Iconic Celebration',
+    description: 'Memorable moment',
+   
+  },
+
+
 ];
 
 export default function GalleryPage() {

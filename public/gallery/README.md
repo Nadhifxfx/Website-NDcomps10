@@ -6,11 +6,18 @@ Place your gallery images in this folder with the following naming:
 - image-3.jpg
 - etc.
 
-## Recommended Image Specifications:
-- Format: JPG, PNG, or WebP
-- Size: 1920x1080px or similar aspect ratios
-- File size: Under 2MB for optimal loading
-- Quality: High quality for best display
+## ⚠️ IMPORTANT - Image Specifications:
+- **Format:** JPG, PNG, or WebP
+- **Size:** 1080x1080 pixels (SQUARE/PERSEGI) ⚠️ WAJIB!
+- **Aspect Ratio:** 1:1 (mandatory)
+- **File size:** Under 2MB for optimal loading
+- **Quality:** High quality for best display
+
+## 📐 Cara Resize Foto Ke 1080x1080:
+1. Gunakan Photoshop, GIMP, Canva, atau online tool (iloveimg.com)
+2. Crop foto menjadi square/persegi (1:1)
+3. Resize ke exactly 1080x1080 pixels
+4. Save as JPG (quality 85-90%)
 
 ## How to Add Images:
 1. Place your images in this folder

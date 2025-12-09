@@ -19,22 +19,22 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/98 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-white/10 shadow-xl">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-18 lg:h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform transition-transform group-hover:scale-110 group-hover:rotate-12 shadow-lg shadow-[#FFD700]/30">
-              <Youtube className="w-7 h-7 text-black" />
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform transition-transform group-hover:scale-110 group-hover:rotate-12 shadow-lg shadow-[#FFD700]/30">
+              <Youtube className="w-5 h-5 sm:w-7 sm:h-7 text-black" />
             </div>
-            <span className="text-2xl font-black text-white tracking-tight">
+            <span className="text-xl sm:text-2xl font-black text-white tracking-tight">
               ND<span className="text-[#FFD700]">comps</span>
             </span>
           </Link>
 
           {/* Desktop Navbar */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8 xl:gap-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
 
@@ -46,6 +46,9 @@ export default function Navbar() {
                     ${isActive ? 'text-[#FFD700]' : 'text-white hover:text-[#FFD700]'}`}
                 >
                   {link.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FFD700]"></span>
+                  )}
                 </Link>
               );
             })}
@@ -54,7 +57,7 @@ export default function Navbar() {
               href="https://www.youtube.com/@NDcomps10"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#FFD700] text-black px-8 py-3 rounded-full font-bold text-sm hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-[#FFD700]/30 uppercase tracking-wider"
+              className="bg-[#FFD700] text-black px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-bold text-sm hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-[#FFD700]/30 uppercase tracking-wider"
             >
               SUBSCRIBE
             </a>
@@ -63,44 +66,50 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-white p-2 hover:text-[#FFD700] transition-colors"
+            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all active:scale-95"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            {isOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : <Menu className="w-6 h-6 sm:w-7 sm:h-7" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="lg:hidden bg-black/98 backdrop-blur-md border-t border-white/10">
-          <div className="px-4 py-6 space-y-4">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+      <div 
+        className={`lg:hidden bg-black border-t border-white/10 overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-screen' : 'max-h-0'
+        }`}
+      >
+        <div className="px-4 py-4 space-y-1">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block font-bold text-lg tracking-widest py-3 transition-colors uppercase
-                    ${isActive ? 'text-[#FFD700]' : 'text-white hover:text-[#FFD700]'}`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`block font-bold text-base sm:text-lg tracking-wider py-3 px-4 rounded-lg transition-all uppercase
+                  ${isActive 
+                    ? 'text-[#FFD700] bg-[#FFD700]/10' 
+                    : 'text-white hover:text-[#FFD700] hover:bg-white/5 active:bg-white/10'
+                  }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
 
-            <a
-              href="https://www.youtube.com/@NDcomps10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-[#FFD700] text-black text-center px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all mt-6 uppercase tracking-wider"
-            >
-              SUBSCRIBE
-            </a>
-          </div>
+          <a
+            href="https://www.youtube.com/@NDcomps10"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-[#FFD700] text-black text-center px-6 py-3.5 rounded-full font-bold text-base sm:text-lg hover:bg-white transition-all mt-4 uppercase tracking-wider active:scale-95"
+          >
+            SUBSCRIBE
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

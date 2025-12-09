@@ -1,8 +1,9 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ChannelStats from '@/components/ChannelStats';
-import { getChannelStats } from '@/lib/youtube';
-import { Target, Heart, Zap, Users, Trophy, Star } from 'lucide-react';
+import { getChannelStats, formatNumber } from '@/lib/youtube';
+import { Target, Heart, Zap, Users, Trophy, Star, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 export const revalidate = 3600;
 
@@ -13,6 +14,12 @@ export const metadata = {
 
 export default async function AboutPage() {
   const channelStats = await getChannelStats();
+  
+  // Get dynamic stats from YouTube API
+  const subscriberCount = channelStats?.statistics?.subscriberCount || '0';
+  const viewCount = channelStats?.statistics?.viewCount || '0';
+  const videoCount = channelStats?.statistics?.videoCount || '0';
+  const channelDescription = channelStats?.snippet?.description || 'Your source for football highlights and compilations';
 
   const features = [
     {
@@ -56,13 +63,57 @@ export default async function AboutPage() {
 
       <main className="pt-24 sm:pt-28 pb-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header with Logo */}
           <div className="text-center mb-16 sm:mb-20">
+            {/* Logo */}
+            <div className="flex justify-center mb-8">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48">
+                <Image
+                  src="/ndcomps-logo.png"
+                  alt="NDcomps10 Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+            
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
               ABOUT <span className="text-[#FFD700]">NDcomps10</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Your premier destination for football compilations, highlights, and unforgettable moments that define the beautiful game.
+              The Home of Football. Your premier destination for football compilations, highlights, and unforgettable moments.
             </p>
+          </div>
+
+          {/* Main Description Banner */}
+          <div className="mb-16 sm:mb-20">
+            <div className="bg-gradient-to-br from-[#FFD700]/10 via-black to-black border border-[#FFD700]/20 rounded-3xl p-8 sm:p-12 lg:p-16">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-3 bg-[#FFD700]/10 border border-[#FFD700]/30 rounded-full px-6 py-3 mb-6">
+                  <Globe className="w-6 h-6 text-[#FFD700]" />
+                  <span className="text-[#FFD700] font-bold text-lg">THE HOME OF FOOTBALL</span>
+                </div>
+              </div>
+              
+              <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed max-w-5xl mx-auto">
+                <p className="text-center text-xl sm:text-2xl text-white font-semibold mb-8">
+                  With <span className="text-[#FFD700] font-bold">{formatNumber(subscriberCount)}</span> subscribers worldwide and <span className="text-[#FFD700] font-bold">{formatNumber(viewCount)}</span> total views, NDcomps10 is The Home of Football.
+                </p>
+                
+                <p>
+                  Born out of a passion for the beautiful game, NDcomps10 is the embodiment of football culture. By positioning ourselves at the heart of the action, we've become part of the team and equal to the players. This gives us access to the best moments football has to offer.
+                </p>
+                
+                <p>
+                  Mixing Ronaldo's agility with Messi's creativity and Lewandowski's precision. That's what our content is: professionally crafted videos that know how to impact the game. All content created by NDcomps10 is made for social media and designed to engage with our followers.
+                </p>
+                
+                <p className="text-center pt-6">
+                  <span className="text-[#FFD700] font-bold">{formatNumber(videoCount)}</span> videos and counting - delivering the passion, skill, and magic that makes football the world's most beloved sport.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="mb-16 sm:mb-20">
