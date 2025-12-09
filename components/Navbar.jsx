@@ -59,15 +59,6 @@ export default function Navbar() {
                 </Link>
               );
             })}
-
-            <a
-              href="https://www.youtube.com/@NDcomps10"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#FFD700] text-black px-6 xl:px-8 py-2.5 xl:py-3 rounded-full font-bold text-sm hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-[#FFD700]/30 uppercase tracking-wider"
-            >
-              SUBSCRIBE
-            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,15 +97,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-
-          <a
-            href="https://www.youtube.com/@NDcomps10"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-[#FFD700] text-black text-center px-6 py-3.5 rounded-full font-bold text-base sm:text-lg hover:bg-white transition-all mt-4 uppercase tracking-wider active:scale-95"
-          >
-            SUBSCRIBE
-          </a>
         </div>
       </div>
     </nav>
