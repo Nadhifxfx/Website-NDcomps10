@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Youtube } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,11 +26,17 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#FFD700] rounded-full flex items-center justify-center transform transition-transform group-hover:scale-110 group-hover:rotate-12 shadow-lg shadow-[#FFD700]/30">
-              <Youtube className="w-5 h-5 sm:w-7 sm:h-7 text-black" />
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 transform transition-transform group-hover:scale-110 shadow-lg">
+              <Image
+                src="/ndcomps-logo.png"
+                alt="NDcomps10 Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              ND<span className="text-[#FFD700]">comps</span>
+              ND<span className="text-[#FFD700]">comps</span>10
             </span>
           </Link>
 
