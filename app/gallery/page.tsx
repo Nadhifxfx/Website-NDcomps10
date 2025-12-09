@@ -16,51 +16,50 @@ const galleryImages = [
     src: '/gallery/Messi Finnalisma.jpg', // Ganti .svg dengan .jpg setelah upload gambar Anda
     title: 'The last two Finalissima holders',
     description: 'Maradona 1993 & Messi 2022 Argentina 🏆 captured',
+    category: 'Player'
   },
   {
     id: 2,
     src: '/gallery/Special One.jpg',
     title: 'The Special One',
     description: 'Jose Mourinho celebrating a tactical masterclass',
+    category: 'Player'
   },
   {
     id: 3,
     src: '/gallery/best number 9.jpeg',
     title: 'The Best Number 9',
     description: 'Legendary striker in action',
+    category: 'Player'
   },
   {
     id: 4,
     src: '/gallery/ronaldo.jpeg',
     title: 'CR7 Iconic Celebration',
     description: 'Legend on the field',
+    category: 'Player'
   },
   {
     id: 5,
     src: '/gallery/BOTH GOAT.jpeg',
     title: 'GOATs',
     description: 'Legends on the field',
+    category: 'Player'
   },
   {
     id: 6,
-    src: '/gallery/cyc.jpeg',
-    title: 'Bicycle Kick Goal',
-    description: 'Spectacular strike',
-    category: 'Team'
-  },
-  {
-    id: 7,
     src: '/gallery/goat.jpg',
     title: '8 TH BALLON DOR',
     description: 'Infinity',
+    category: 'Player'
   },
-    {
-    id: 8,
+  {
+    id: 7,
     src: '/gallery/HIM.jpeg',
     title: 'Iconic Celebration',
     description: 'Memorable moment',
-   
-  },
+    category: 'Player'
+  }
 
 
 ];
