@@ -1,32 +1,94 @@
-# NDcomps10 - Football Highlights Website
+# NDcomps10 - YouTube Channel Website
 
-Website profil modern untuk channel YouTube NDcomps10 dengan desain bergaya 433football.com. Dibangun dengan Next.js 13, TailwindCSS, dan integrasi YouTube Data API v3.
+🎬 Website profil modern dan lengkap untuk channel YouTube **NDcomps10** dengan integrasi YouTube Data API v3. Website ini dibangun dengan Next.js 13, TailwindCSS, dan fitur-fitur canggih seperti search, filter, playlist system, dan gallery dengan lightbox.
 
-## Features
+## ✨ Features Lengkap
 
-- **Modern Design**: Bold, clean, dan sporty design dengan tema hitam, putih, dan kuning emas
-- **Fully Responsive**: Mobile-first design yang sempurna di semua ukuran layar
-- **YouTube Integration**: Menampilkan video terbaru, populer, dan statistik channel secara dinamis
-- **Video Slider**: Horizontal scroll slider dengan drag support
-- **Channel Stats**: Menampilkan subscribers, views, dan total video
-- **SEO Optimized**: Meta tags dan OpenGraph untuk SEO yang baik
-- **Fast Performance**: Static generation dengan revalidasi otomatis
+### 🏠 Home Page
+- **Hero Section** dengan channel profile, banner, subscriber & video count
+- **Latest Video Slider** horizontal scroll dengan touch support
+- **Popular Videos Grid** dengan hover effects
+- **Channel Statistics** dinamis dari YouTube API
 
-## Pages
+### 🎥 Video Features
+- **Video Detail Page** - Mini YouTube player dengan:
+  - Embedded YouTube player
+  - View count, like count, publish date
+  - Expandable description
+  - Related videos sidebar
+  - Channel information
+  
+- **Video Grid** dengan masonry layout
+- **Search & Filter System**:
+  - Search by keyword
+  - Sort: Latest, Most Viewed, Top Rated
+  - Filter by duration: Any, Shorts (<4min), Medium (4-20min), Long (>20min)
+  - Kombinasi multiple filters
 
-1. **Home** - Hero section, video slider, channel stats, dan popular videos
-2. **Videos** - Grid layout menampilkan semua video dari channel
-3. **About** - Informasi tentang channel dan misi
-4. **Contact** - Form kontak dan informasi channel
+### 📋 Playlist System
+- **Playlist Grid** menampilkan semua playlist
+- **Playlist Detail Page** dengan video list
+- Video count per playlist
+- Play All on YouTube button
 
-## Tech Stack
+### 🖼️ Gallery Page
+- **Masonry Grid Layout** responsive
+- **Lightbox Feature**:
+  - Full-screen image viewer
+  - Next/Previous navigation
+  - Keyboard navigation (Arrow keys, Escape)
+  - Image counter
+  - Watch Video CTA
 
-- Next.js 13 (App Router)
-- TypeScript
-- TailwindCSS
-- YouTube Data API v3
-- Lucide React (Icons)
-- shadcn/ui components
+### 🔍 Search & Navigation
+- Live search functionality
+- Filter combinations
+- Smooth page transitions
+- Responsive navbar
+- Breadcrumb navigation
+
+### 📱 Responsive Design
+- Mobile-first approach
+- Touch gesture support
+- Adaptive layouts untuk semua screen sizes
+- Optimized untuk: Mobile, Tablet, Desktop, Large screens
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 13 (App Router)
+- **Language**: TypeScript + JavaScript
+- **Styling**: TailwindCSS + Custom CSS
+- **API**: YouTube Data API v3
+- **Icons**: Lucide React
+- **UI Components**: shadcn/ui + Custom Components
+- **Image Optimization**: Next.js Image
+- **State Management**: React Hooks
+
+## 📦 API Endpoints
+
+Website ini menyediakan API routes untuk akses data:
+
+```
+GET /api/videos?type=latest&maxResults=20
+GET /api/videos?type=popular&maxResults=20
+GET /api/videos?type=shorts&maxResults=20
+GET /api/videos/[videoId]
+GET /api/playlists?maxResults=50
+GET /api/playlists/[playlistId]?maxResults=50
+GET /api/search?q=keyword&order=viewCount&duration=any
+GET /api/channel
+```
+
+## 📄 Available Pages
+
+1. **/** - Home (Hero + Latest Videos + Popular)
+2. **/videos** - All videos dengan search & filter
+3. **/videos/[videoId]** - Video detail dengan player & related videos
+4. **/playlists** - All playlists grid
+5. **/playlists/[playlistId]** - Playlist detail dengan video list
+6. **/gallery** - Gallery dengan masonry layout & lightbox
+7. **/about** - About channel page
+8. **/contact** - Contact form page
 
 ## Setup Instructions
 

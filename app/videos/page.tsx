@@ -1,7 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import VideoCard from '@/components/VideoCard';
-import { getLatestVideos } from '@/lib/youtube';
+import VideoFilters from '@/components/VideoFilters';
+import VideoPagination from '@/components/VideoPagination';
+import { getLatestVideos, getPopularVideos, searchVideos, getShorts } from '@/lib/youtube';
 import { Film } from 'lucide-react';
 
 export const revalidate = 3600;
@@ -11,8 +12,53 @@ export const metadata = {
   description: 'Browse all football highlights and compilations from NDcomps10'
 };
 
-export default async function VideosPage() {
-  const videos = await getLatestVideos(20);
+interface VideoResult {
+  videos: any[];
+  totalResults: number;
+  nextPageToken: string | null;
+  prevPageToken: string | null;
+}
+
+export default async function VideosPage({ 
+  searchParams 
+}: { 
+  searchParams: { q?: string; order?: string; duration?: string; page?: string; perPage?: string } 
+}) {
+  const query = searchParams.q;
+  const order = searchParams.order || 'date';
+  const duration = searchParams.duration || 'any';
+  const page = parseInt(searchParams.page || '1');
+  const perPage = parseInt(searchParams.perPage || '20');
+
+  let result: VideoResult = { videos: [], totalResults: 0, nextPageToken: null, prevPageToken: null };
+
+  // If search query exists
+  if (query) {
+    result = await searchVideos(query, { order, videoDuration: duration, maxResults: 50 }) as VideoResult;
+  } 
+  // If filtering by shorts
+  else if (duration === 'short') {
+    result = await getShorts(50) as VideoResult;
+  }
+  // If sorting by views or rating
+  else if (order === 'viewCount' || order === 'rating') {
+    result = await getPopularVideos(50) as VideoResult;
+  }
+  // Default: latest videos
+  else {
+    result = await getLatestVideos(50) as VideoResult;
+  }
+
+  // Apply rating sort on client side if needed
+  let videos = result.videos || [];
+  
+  if (order === 'rating' && videos.length > 0) {
+    videos = [...videos].sort((a: any, b: any) => {
+      const likeA = parseInt(a.statistics?.likeCount || '0');
+      const likeB = parseInt(b.statistics?.likeCount || '0');
+      return likeB - likeA;
+    });
+  }
 
   return (
     <div className="min-h-screen bg-black">
@@ -34,18 +80,18 @@ export default async function VideosPage() {
             </p>
           </div>
 
+          {/* Filters */}
           <div className="mb-8">
-            <div className="flex items-center gap-4 text-sm text-gray-400">
-              <span className="font-bold text-white">{videos.length}</span>
-              <span>videos available</span>
-            </div>
+            <VideoFilters totalVideos={result.totalResults || videos.length} />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-            {videos.map((video: any, index: number) => (
-              <VideoCard key={video.id?.videoId || video.id || index} video={video} priority={index < 8} />
-            ))}
-          </div>
+          {/* Video Grid with Pagination */}
+          <VideoPagination 
+            videos={videos}
+            currentPage={page}
+            itemsPerPage={perPage}
+            totalItems={result.totalResults || videos.length}
+          />
 
           {videos.length === 0 && (
             <div className="text-center py-20">

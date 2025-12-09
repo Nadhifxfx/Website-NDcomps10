@@ -16,9 +16,7 @@ export default function VideoCard({ video, priority = false }) {
 
   return (
     <Link
-      href={`https://www.youtube.com/watch?v=${videoId}`}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/videos/${videoId}`}
       className="group block"
     >
       <div className="relative aspect-video overflow-hidden rounded-lg bg-black/50">
