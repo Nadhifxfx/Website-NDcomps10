@@ -28,12 +28,15 @@ export default function VideoFilters({ totalVideos }: VideoFiltersProps) {
     const newParams = new URLSearchParams(searchParams.toString());
     
     Object.entries(params).forEach(([key, value]) => {
-      if (value && value !== 'any') {
+      if (value && value !== 'any' && value !== '') {
         newParams.set(key, value);
       } else {
         newParams.delete(key);
       }
     });
+
+    // Reset to page 1 when filters change
+    newParams.delete('page');
 
     startTransition(() => {
       router.push(`/videos?${newParams.toString()}`);
@@ -49,14 +52,12 @@ export default function VideoFilters({ totalVideos }: VideoFiltersProps) {
     { value: 'date', label: 'Latest' },
     { value: 'viewCount', label: 'Most Viewed' },
     { value: 'rating', label: 'Top Rated' },
-    { value: 'relevance', label: 'Most Relevant' },
   ];
 
   const durationOptions = [
     { value: 'any', label: 'Any Duration' },
     { value: 'short', label: 'Shorts (< 4 min)' },
     { value: 'medium', label: 'Medium (4-20 min)' },
-    { value: 'long', label: 'Long (> 20 min)' },
   ];
 
   return (

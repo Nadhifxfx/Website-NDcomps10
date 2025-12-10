@@ -36,17 +36,13 @@ export default async function VideosPage({
   if (query) {
     result = await searchVideos(query, { order, videoDuration: duration, maxResults: 50 }) as VideoResult;
   } 
-  // If filtering by shorts
-  else if (duration === 'short') {
-    result = await getShorts(50) as VideoResult;
-  }
-  // If sorting by views or rating
+  // If sorting by views or rating with duration filter
   else if (order === 'viewCount' || order === 'rating') {
-    result = await getPopularVideos(50) as VideoResult;
+    result = await getPopularVideos(50, '', duration) as VideoResult;
   }
-  // Default: latest videos
+  // Default: latest videos with duration filter
   else {
-    result = await getLatestVideos(50) as VideoResult;
+    result = await getLatestVideos(50, '', duration) as VideoResult;
   }
 
   // Apply rating sort on client side if needed

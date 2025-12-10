@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Youtube, Instagram, Twitter, Facebook } from 'lucide-react';
+import { Youtube, Instagram } from 'lucide-react';
+import { SiTiktok } from 'react-icons/si';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -35,16 +36,9 @@ export default function Footer() {
               <a
                 href="#"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#FFD700] hover:text-black transition-colors"
-                aria-label="Twitter"
+                aria-label="TikTok"
               >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#FFD700] hover:text-black transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
+                <SiTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -63,6 +57,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Gallery
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
                   About
                 </Link>
@@ -76,27 +75,27 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-[#FFD700]">CATEGORIES</h4>
+            <h4 className="text-lg font-bold mb-4 text-[#FFD700]">CONTENT</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Skills & Goals
-                </a>
+                <Link href="/videos?duration=short" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Shorts
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Match Highlights
-                </a>
+                <Link href="/videos?order=viewCount" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Most Viewed
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Best Moments
-                </a>
+                <Link href="/videos?order=date" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Latest Videos
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Player Analysis
-                </a>
+                <Link href="/gallery" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Media Gallery
+                </Link>
               </li>
             </ul>
           </div>
